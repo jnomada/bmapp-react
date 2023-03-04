@@ -1,0 +1,10 @@
+.expenseList table th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+.expenseList table th {
+  background-color: black;
+  color: aliceblue;
+  border: none;
+}
