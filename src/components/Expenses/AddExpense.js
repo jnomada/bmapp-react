@@ -30,8 +30,14 @@ const AddExpense = (props) => {
         })
       })
 
-      const data = await response.json();
-      props.onExpenseSubmit();
+      const expense = {
+        type: type,
+        description: description,
+        amount: amount,
+        expenseDate: expenseDate
+      }
+
+      response.status === 200 && props.onExpenseSubmit();
 
     } catch (error) {
       console.log(error);
@@ -61,6 +67,7 @@ const AddExpense = (props) => {
         <div className={classes['input-block']}>
           <label htmlFor="type">Type:</label>
           <select id="type" name="type" value={type} onChange={onTypeChangeHandler}>
+            <option value=''>None selected</option>
             {expenseTypes}
           </select>
         </div>

@@ -22,6 +22,11 @@
   background-color: rgb(10, 37, 37);
   color: #ffffff;
   border: 1px solid #737e74;
+  padding: 7px;
+}
+
+.add-expense form label {
+  padding: 7px;
 }
 
 .add-expense .input-block input {
@@ -29,9 +34,13 @@
   height: 20px;
 }
 
+.add-expense .input-block input {
+  background-color: rgb(10, 37, 37);
+}
+
 .add-expense .input-block select {
-  width: 208px;
-  height: 30px;
+  width: 216px;
+  height: 38px;
 }
 
 .add-expense form button {
