@@ -1,18 +1,20 @@
 import classes from './ExpenseList.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Expense from './Expense';
+import ExpenseFilter from './ExpenseFilter';
 
 const ExpenseList = (props) => {
 
   const [expenseData, setExpenseData] = useState([]);
   const [hasDataLoaded, setHasDataLoaded] = useState(false);
+  const [date, setDate] = useState(new Date());
 
   async function getExpenses() {
     const myData = {
       username: props.username,
       password: props.password,
-      expenseYear: new Date('2022-05-01').getFullYear(),
-      expenseMonth: new Date('2022-05-01').getMonth() + 1
+      expenseYear: date.getFullYear(),
+      expenseMonth: date.getMonth() + 1
     }
 
     try {
@@ -35,23 +37,38 @@ const ExpenseList = (props) => {
     }  
   }
 
+  useEffect(() => {
+    getExpenses();
+  }, [date])
+
+  const onDateChangeHandler = (expenseDate) => {
+    setDate(expenseDate);
+  }
+
   return (
-    <div className={classes.expenseList}>
-      <button onClick={getExpenses}></button>
-      {hasDataLoaded && (
-        <table>
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Amount</th>
-          </tr>
-          {expenseData.map(expense => {
-            return <Expense key={expense.expenseId} date={expense.expenseDate} amount={expense.amount} type={expense.type} description={expense.description} />
-          })}
-        </table>
-      )}
-    </div>
+    <React.Fragment>
+        <div className={classes.expenseList}>
+          <p className={classes['section-title']}>Expenses</p>
+          <ExpenseFilter onDateChange={onDateChangeHandler} />
+          {hasDataLoaded && (
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {expenseData.map(expense => {
+                  return <Expense key={expense.expenseId} date={expense.expenseDate} amount={expense.amount} type={expense.type} description={expense.description} />
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+    </React.Fragment>
   )
 }
 

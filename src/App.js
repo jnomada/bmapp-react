@@ -8,6 +8,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [userId, setUserId] = useState();
 
   return (
     
@@ -16,10 +17,12 @@ function App() {
     <Home 
       password={password}
       username={username}
+      userId={userId}
     />
     : <Login 
         onUsernameChange={setUsername} 
         onPasswordChange={setPassword}
+        onUserIdChange={setUserId}
         password={password}
         username={username}
         onLoggedIn={setIsLoggedIn}

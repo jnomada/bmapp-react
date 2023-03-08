@@ -1,10 +1,27 @@
+.expenseList {
+  width: 100%;
+  background-color: rgb(10, 37, 37);
+}
+
+.expenseList .section-title {
+  background-color: rgb(81, 218, 149);
+  padding: 10px;
+}
+
+.expenseList table {
+  background-color: rgb(12, 97, 97);
+  border-spacing: 0px;
+  width: 100%;
+}
 .expenseList table th, td {
   padding: 10px;
   text-align: left;
 }
 
 .expenseList table th {
-  background-color: black;
+  background-color: rgb(10, 37, 37);
   color: aliceblue;
-  border: none;
+}
+.expenseList table tr:nth-child(2n) {
+  background-color: rgb(9, 75, 75);
 }

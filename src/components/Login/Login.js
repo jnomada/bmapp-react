@@ -19,6 +19,7 @@ const Login = (props) => {
       });
   
       const data = await response.json();
+      props.onUserIdChange(data.userId);
       props.onLoggedIn(true);
     
     } catch (error) {
