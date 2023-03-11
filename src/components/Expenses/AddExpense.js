@@ -7,6 +7,7 @@ const AddExpense = (props) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState();
   const [expenseDate, setExpenseDate] = useState(new Date());
+  const today = new Date().toISOString().substring(0,10);
 
   const expenseTypes = ['Transport', 'Food', 'Restaurants'].map(type => {
     return <option value={type}>{type}</option>
@@ -19,6 +20,7 @@ const AddExpense = (props) => {
       const response = await fetch('https://bmapp-api.jsealey.com/expenses/', {
         method: 'POST',
         headers: {
+          "Accept": "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -30,12 +32,12 @@ const AddExpense = (props) => {
         })
       })
 
-      const expense = {
+     /*  const expense = {
         type: type,
         description: description,
         amount: amount,
         expenseDate: expenseDate
-      }
+      } */
 
       response.status === 200 && props.onExpenseSubmit();
 
@@ -81,7 +83,7 @@ const AddExpense = (props) => {
         </div>
         <div className={classes['input-block']}>
           <label htmlFor="amount">Date:</label>
-          <input type="date" id="date" name="date" onChange={onExpenseDateChangeHandler}></input>
+          <input type="date" id="date" name="date" defaultValue={today} onChange={onExpenseDateChangeHandler}></input>
         </div>
         <button>Submit</button>
       </form>

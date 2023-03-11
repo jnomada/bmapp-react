@@ -8,9 +8,8 @@ const Dashboard = (props) => {
   const [expenseData, setExpenseData] = useState([]);
   const [hasDataLoaded, setHasDataLoaded] = useState(false);
   const [date, setDate] = useState(new Date());
-  const [newExpenseAdded, setNewExpenseAdded] = useState([]);
 
-  async function getExpenses() {
+  const getExpenses = async () => {
     const myData = {
       username: props.username,
       password: props.password,
@@ -46,7 +45,7 @@ const Dashboard = (props) => {
     setDate(expenseDate);
   }
 
-  const addExpenseHandler = () => {
+  const updateExpenseListHandler = () => {
     getExpenses();
   }
 
@@ -54,12 +53,14 @@ const Dashboard = (props) => {
     <div className={classes.dashboard}>
       <AddExpense 
         userId={props.userId}
-        onExpenseSubmit={addExpenseHandler}
+        onExpenseSubmit={updateExpenseListHandler}
       />
       <ExpenseList 
         expenseData={expenseData}
         hasDataLoaded={hasDataLoaded}
         onDateChange={onDateChangeHandler}
+        userId={props.userId}
+        updateExpenseList={updateExpenseListHandler}
       />
     </div>
   )
