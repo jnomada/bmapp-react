@@ -9,7 +9,7 @@ const ExpenseList = (props) => {
 
   const onSelectHandler = (e) => {
     const checkbox = e.target;
-    if(checkbox.checked) {
+    if(checkbox.checked && !checkedItems.includes(e.target.toString())) {
       setCheckedItems((prevCheckedItems) => {
         return [e.target.value, ...prevCheckedItems];
       });
