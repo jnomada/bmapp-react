@@ -32,13 +32,6 @@ const AddExpense = (props) => {
         })
       })
 
-     /*  const expense = {
-        type: type,
-        description: description,
-        amount: amount,
-        expenseDate: expenseDate
-      } */
-
       response.status === 200 && props.onExpenseSubmit();
 
     } catch (error) {

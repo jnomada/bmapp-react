@@ -11,7 +11,6 @@ function App() {
   const [userId, setUserId] = useState();
 
   return (
-    
     isLoggedIn 
     ? 
     <Home 
