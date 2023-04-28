@@ -114,7 +114,7 @@ const Dashboard = (props) => {
         chartType={'PieChart'}
         data={monthlyTypeData}
         width={'100%'}
-        height={'400px'}
+        height={'250px'}
         options={{
           legend: {textStyle: {color: 'ffffff'}},
           backgroundColor: 'rgb(10, 37, 37)',
@@ -157,7 +157,7 @@ const Dashboard = (props) => {
         chartType={'PieChart'}
         data={yearlyTypeData}
         width={'100%'}
-        height={'400px'}
+        height={'250px'}
         options={{
           legend: {textStyle: {color: '#ffffff'}},
           backgroundColor: 'rgb(10, 37, 37)',          

@@ -1,0 +1,16 @@
+.expense-actions {
+  display: flex;
+  padding: 15px;
+  height: 30px;
+  justify-content: right;
+}
+
+.expense-actions .trash-icon {
+  font-size: 30px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.expense-actions .trash-icon:hover {
+  font-size: 40px;
+}

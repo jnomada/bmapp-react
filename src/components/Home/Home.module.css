@@ -2,3 +2,7 @@
   padding: 20px;
   background-color: #51da95;
 }
+
+.home .title span {
+  text-transform: capitalize;
+}
