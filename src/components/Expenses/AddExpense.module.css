@@ -1,10 +1,13 @@
 .add-expense {
   background-color: rgb(10, 37, 37);
+  height: fit-content;
+  height: 400px;
 }
 
 .add-expense .section-title {
   background-color: rgb(81, 218, 149);
   padding: 10px;
+  font-weight: bold;
 }
 
 .add-expense form {

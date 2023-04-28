@@ -1,7 +1,7 @@
 import classes from './ExpenseList.module.css';
 import React, {useState } from 'react';
 import Expense from './Expense';
-import ExpenseFilter from './ExpenseFilter';
+import ExpenseActions from './ExpenseActions';
 
 const ExpenseList = (props) => {
 
@@ -49,35 +49,36 @@ const ExpenseList = (props) => {
     <React.Fragment>
         <div className={classes.expenseList}>
           <p className={classes['section-title']}>Expenses</p>
-          <ExpenseFilter onDateChange={props.onDateChange} />
-          <button onClick={onSubmitDeletionHandler}>Delete</button>
+          <ExpenseActions onDateChange={props.onDateChange} onDeleteSubmission={onSubmitDeletionHandler}/>
           {props.hasDataLoaded && (
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Date</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {props.expenseData.map(expense => {
-                  return (
-                    <Expense 
-                      key={expense.expenseId}
-                      expenseId={expense.expenseId}  
-                      date={expense.expenseDate} 
-                      amount={expense.amount} 
-                      type={expense.type} 
-                      description={expense.description} 
-                      onSelect={onSelectHandler}
-                    />
-                  )
-                })}
-              </tbody>
-            </table>
+            <div className={classes['scrollable']}>
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {props.expenseData.map(expense => {
+                    return (
+                      <Expense 
+                        key={expense.expenseId}
+                        expenseId={expense.expenseId}  
+                        date={expense.expenseDate} 
+                        amount={expense.amount} 
+                        type={expense.type} 
+                        description={expense.description} 
+                        onSelect={onSelectHandler}
+                      />
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
     </React.Fragment>
