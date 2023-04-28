@@ -5,21 +5,16 @@ import ExpenseActions from './ExpenseActions';
 
 const ExpenseList = (props) => {
 
-  const [checkedItems, setCheckedItems] = useState([]);
+  let checkedItemArray = [];
 
   const onSelectHandler = (e) => {
     const checkbox = e.target;
-    if(checkbox.checked && !checkedItems.includes(e.target.toString())) {
-      setCheckedItems((prevCheckedItems) => {
-        return [e.target.value, ...prevCheckedItems];
-      });
-    } else {
-      const index = checkedItems.indexOf(String(e.target.value).toString());
-      if (index > -1) {
-        let itemAarray = [...checkedItems];
-        itemAarray.splice(itemAarray.indexOf(index));
-        setCheckedItems(itemAarray);
-      }
+    if(checkbox.checked && !checkedItemArray.includes(e.target.value)) {
+      checkedItemArray.push(e.target.value);
+    } 
+    if(!checkbox.checked && checkedItemArray.includes(e.target.value)) {
+      const checkedItems = checkedItemArray.filter(value => !(value === e.target.value));
+      checkedItemArray = checkedItems;
     }
   }
 
@@ -33,12 +28,12 @@ const ExpenseList = (props) => {
         },
         body: JSON.stringify({
           "userId": props.userId,
-          "deleteExpenses": checkedItems
+          "deleteExpenses": checkedItemArray
         })
       })
 
       response.status === 200 && props.updateExpenseList();
-      setCheckedItems([]);
+      checkedItemArray = [];
 
     } catch (error) {
       console.log(error);
